@@ -11,3 +11,14 @@ anyjson
 billiard
 kombu
 pytz
+
+ipython
+decorator
+ipython-genutils
+traitlets
+ptyprocess
+pexpect
+backports.shutil-get-terminal-size
+simplegeneric
+pathlib2
+pickleshare
