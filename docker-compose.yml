@@ -1,0 +1,53 @@
+version: '2'
+
+services:
+  web:
+    restart: always
+    build: .
+    command: ./run_web.sh
+    volumes:
+      - ".:/home/django"
+    ports:
+      - "8000:8000"
+    links:
+      - postgres:postgres
+      - redis:redis
+    env_file: .env
+
+  postgres:
+    restart: always
+    image: postgres:latest
+    volumes:
+      - pg-data:/var/lib/postgres/data
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+
+  redis:
+    restart: always
+    image: redis:latest
+    volumes:
+      - redis-data:/var/lib/redis
+    ports:
+      - "6379:6379"
+
+  rabbitmq:
+    restart: always
+    image: rabbitmq:latest
+    env_file: .env
+
+  worker:
+    restart: always
+    build: .
+    command: ./run_celery.sh
+    volumes:
+      - ".:/home/django"
+    links:
+      - redis:redis
+      - rabbitmq:rabbitmq
+    env_file: .env
+
+volumes:
+  pg-data: {}
+  redis-data: {}
