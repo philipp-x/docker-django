@@ -2,15 +2,15 @@
 
 Django development made easy with [Docker](https://www.docker.com/). This quickstart guide demonstrates how to containerize [Django](https://www.djangoproject.com/), [Postgres](https://www.postgresql.org/), [Redis](http://redis.io/), [Celery](http://www.celeryproject.org/) and [RabbitMQ](https://www.rabbitmq.com/) for local development.
 
-Docker Engine is supported on Linux, Cloud, Windows and OS X. If you haven't used Docker before, be sure to check out the [Installation Guide](https://docs.docker.com/engine/installation/).
+Docker is supported on Linux, Cloud, Windows and macOS. If you haven't used Docker before, be sure to check out the [Installation Guide](https://docs.docker.com/engine/installation/).
 
 ## Requirements
 
-* Docker Toolbox 1.11 or higher
+* Docker v17.06 or higher
 
 ## Setup
 
-1. Make sure [Docker Toolbox](https://www.docker.com/products/docker-toolbox) is installed and running.
+1. Make sure [Docker](https://store.docker.com/) is installed and running.
 2. Run the following commands in the given order:
 
 ```bash
@@ -28,7 +28,7 @@ docker-compose run --rm web python manage.py createsuperuser
 # Create a superuser account
 ```
 
-At this point, your Django application should be running at port `8000` on your Docker host. If you are using a Docker Machine VM, you can use the `docker-machine ip MACHINE_NAME` to get the IP address.
+At this point, your Django application should be running at port `8000` on your Docker host.
 
 Type `docker-compose stop` to stop running containers without removing them.
 
